@@ -1,4 +1,6 @@
+import { UUID } from "node:crypto"
+
 export interface BaseRepository<T> {
-    save(item: T): Promise<void>
+    save(item: T): Promise<UUID>
     findAll(): Promise<Set<T>>
 }
