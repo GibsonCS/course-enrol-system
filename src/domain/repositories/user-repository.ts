@@ -1,4 +1,4 @@
-import {type  BaseRepository } from "@/domain/repositories/base-respository.ts";
+import {type  BaseRepository } from "./../../domain/repositories/base-respository.ts";
 import  type User from "../entities/user.ts";
 
 

@@ -18,8 +18,7 @@
   "dependencies": {
     "fastify": "^5.5.0",
     "pino-pretty": "^13.1.1",
-    "pnpm": "^10.15.0",
-    "tsx": "^4.20.4"
+    "pnpm": "^10.15.0"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",

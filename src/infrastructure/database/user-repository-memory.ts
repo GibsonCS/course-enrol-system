@@ -1,6 +1,5 @@
-import { type UserCreateDTO } from "@/application/use-cases/create-user.ts";
-import type User from "@/domain/entities/user.ts";
-import { type UserRepository } from "@/domain/repositories/user-repository.ts";
+import type User from "./../../domain/entities/user.ts";
+import { type UserRepository } from "./../../domain/repositories/user-repository.ts";
 
 const users = new Set<User>()
 export  default class UserRepositoryMemory implements UserRepository {  
