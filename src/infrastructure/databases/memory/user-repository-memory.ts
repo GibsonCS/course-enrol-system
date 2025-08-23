@@ -1,5 +1,5 @@
-import type User from "./../../domain/entities/user.ts";
-import { type UserRepository } from "./../../domain/repositories/user-repository.ts";
+import type User from "../../domain/entities/user.ts";
+import { type UserRepository } from "../../domain/repositories/user-repository.ts";
 import {randomUUID, UUID} from 'node:crypto'
 
 const users = new Set<User>()

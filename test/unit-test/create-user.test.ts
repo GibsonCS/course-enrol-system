@@ -1,6 +1,6 @@
 import CreateUser from '../../src/application/use-cases/create-user.ts'
 import User from '../../src/domain/entities/user.ts'
-import UserRepositoryMemory from '../../src/infrastructure/database/user-repository-memory.ts'
+import UserRepositoryMemory from '../../src/infrastructure/databases/user-repository-memory.ts'
 import {test, expect} from '@jest/globals'
 import { randomUUID } from 'node:crypto'
 
