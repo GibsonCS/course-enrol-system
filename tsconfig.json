@@ -15,9 +15,7 @@
     "skipLibCheck": true,
 
     "moduleResolution": "nodenext",
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "./",
+    
   }
 }
