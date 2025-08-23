@@ -1,4 +1,5 @@
-import type User from "./../../domain/entities/user.ts";
+import { randomUUID } from "node:crypto";
+import User from "./../../domain/entities/user.ts";
 import { type UserRepository } from "./../../domain/repositories/user-repository.ts";
 
 export type UserCreateDTO = {
@@ -14,9 +15,14 @@ export default class CreateUser {
         this.userRepository = userRepository
     }
 
-    async execute(user: User ) {
-        await this.userRepository.save(user)
-        console.log(await this.userRepository.findAll())
+    async execute({name,cpf,email,password}: UserCreateDTO ) {
+
+        const user = new User(name,cpf,email,password)
+
+        const userId = await this.userRepository.save(user)
+
+        return { userId }
+       
     }
 
 }
