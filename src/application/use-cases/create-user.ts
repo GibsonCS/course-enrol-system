@@ -17,6 +17,8 @@ export default class CreateUser {
 
     async execute({name,cpf,email,password}: UserCreateDTO ) {
 
+        if(email === 'gibson@gmail.com') throw new Error('Email has already been register')
+
         const user = new User(name,cpf,email,password)
 
         const userId = await this.userRepository.save(user)
