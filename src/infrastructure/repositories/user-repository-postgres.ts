@@ -12,7 +12,7 @@ export default class UserRepositoryPostgres implements UserRepository {
         return result[0].id
     }
 
-    async findAll(): Promise<Set<User>> {
+    async findAll(): Promise<Array<User>> {
         throw new Error("Method not implemented.");
     }
 

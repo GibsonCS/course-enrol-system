@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --env --watch src/main.ts",
-    "test": "jest --runInBand",
+    "dev": "node --env-file=.env --watch src/main.ts",
+    "test": "npx jest --env-file=.env --runInBand",
     "test:debug": "node --inspect src/main.ts",
     "db:generate": "npx drizzle-kit generate",
     "db:migrate": "npx drizzle-kit migrate",

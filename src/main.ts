@@ -1,5 +1,5 @@
-import CreateUser, { type UserCreateDTO } from "./application/use-cases/create-user.ts";
-import UserRepositoryMemory  from "./infrastructure/databases/user-repository-memory.ts";
+import CreateUser from "./application/use-cases/create-user.ts";
+import UserRepositoryMemory  from "./infrastructure/databases/memory/user-repository-memory.ts";
 import User from "./domain/entities/user.ts";
 
 const createUser = new CreateUser(new UserRepositoryMemory())

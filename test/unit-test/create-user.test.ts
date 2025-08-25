@@ -1,9 +1,11 @@
+
 import CreateUser from '../../src/application/use-cases/create-user.ts'
 import UserRepositoryPostgres from '../../src/infrastructure/repositories/user-repository-postgres.ts'
-import {test, expect} from '@jest/globals'
+import { test, expect} from '@jest/globals'
 
 
 const userRepositoryPostgres = new UserRepositoryPostgres()
+
 const createUser = new CreateUser(userRepositoryPostgres)
 
 test('should create a user and return a uuid', async () => {
@@ -20,6 +22,5 @@ test('should return a error to send a name less than 3', async () => {
 
 
 test('should return a error if a email has already been register', async () => {
-    
    expect(async () => await createUser.execute({name:'Gibs',cpf:'15675357718',email:'gibson@gmail.com',password:"5445"})).rejects.toThrow('Email has already been register') 
 })
