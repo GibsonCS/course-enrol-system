@@ -1,9 +1,46 @@
 {
-  "id": "c409e06b-74c9-4d0f-9d4d-711a60fe87b0",
+  "id": "33906a3e-f6af-4a6d-ae25-673705c29634",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.roles": {
+      "name": "roles",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "roles_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "role": {
+          "name": "role",
+          "type": "roleNames",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.users": {
       "name": "users",
       "schema": "",
@@ -59,7 +96,17 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.roleNames": {
+      "name": "roleNames",
+      "schema": "public",
+      "values": [
+        "student",
+        "administrator",
+        "teacher"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
