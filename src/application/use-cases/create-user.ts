@@ -1,13 +1,9 @@
-import { randomUUID } from "node:crypto";
 import User from "./../../domain/entities/user.ts";
 import { type UserRepository } from "./../../domain/repositories/user-repository.ts";
+import { type CreateUserInputDTO } from "../dtos/user/create-user-input-dto.ts";
+import * as argon from 'argon2'
+import {randomUUID, UUID} from 'node:crypto'
 
-export type UserCreateDTO = {
-    name: string,
-    cpf: string,
-    email: string,
-    password: string
-}
 
 export default class CreateUser {
     private userRepository: UserRepository
@@ -15,16 +11,18 @@ export default class CreateUser {
         this.userRepository = userRepository
     }
 
-    async execute({name,cpf,email,password}: UserCreateDTO ) {
+    async execute(input: CreateUserInputDTO ): Promise<{ userID: UUID }> {
+        const findedUser = await this.userRepository.findByEmail(input.email)
 
-        if(email === 'gibson@gmail.com') throw new Error('Email has already been register')
+        if(findedUser) throw new Error('Email has already been register')
 
-        const user = new User(name,cpf,email,password)
+        const encryptedPassword = await argon.hash(input.password)
 
-        const userId = await this.userRepository.save(user)
+        const user = new User({id: randomUUID() , name: input.name, cpf: input.cpf, email: input.email, password: encryptedPassword})
 
-        return { userId }
-       
+        const userID = await this.userRepository.save(user)
+
+        return { userID } 
     }
 
 }
