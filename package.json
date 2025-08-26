@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "seed": "node --env-file=.env src/infrastructure/databases/postgres/seed.ts",
     "dev": "node --env-file=.env --watch src/main.ts",
     "test": "npx jest --detectOpenHandles --runInBand",
     "test:debug": "node --inspect src/main.ts",
