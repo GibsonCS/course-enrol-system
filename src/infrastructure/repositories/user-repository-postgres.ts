@@ -6,6 +6,27 @@ import { usersTable } from '../databases/postgres/schemas/user-schema.ts';
 import { eq } from "drizzle-orm";
 
 export default class UserRepositoryPostgres implements UserRepository {
+    async updateName(id: UUID, name: string): Promise<void> {
+        await db.update(usersTable).set({name}).where(eq(usersTable.id, id))
+    }
+
+    async update(item: User): Promise<void> {
+       throw new Error('method not implemented')
+    }
+
+    async findByID(id: string): Promise<User | undefined> {
+        const result = await db.select().from(usersTable).where(eq(usersTable.id, id))
+        
+        if(!result[0]) return undefined
+     
+        return new User( {
+            id: result[0].id as UUID,
+            name: result[0].name,
+            cpf: result[0].cpf,
+            email: result[0].email,
+            password: result[0].password
+        })
+    }
 
     async findByEmail(email: string): Promise<User | undefined> {
         const [result] = await db.select().from(usersTable).where(eq(usersTable.email, email))
