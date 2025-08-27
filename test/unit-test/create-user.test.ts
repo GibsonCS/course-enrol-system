@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import CreateUser from '../../src/application/use-cases/create-user.ts'
 import UserRepositoryPostgres from '../../src/infrastructure/repositories/user-repository-postgres.ts'
 import { test, expect, jest} from '@jest/globals'
-import User from 'src/domain/entities/user.ts'
+import User from '../../src/domain/entities/user.ts'
 
 const userRepositoryPostgres = new UserRepositoryPostgres()
 

@@ -25,6 +25,12 @@ export default class User {
         return this._name
     }
 
+    set name(name: string){
+        if(name.length < 3) throw new Error('The name must be three or more characters')
+            
+        this._name = name
+    }
+
     get cpf() {
         return this._cpf
     }
