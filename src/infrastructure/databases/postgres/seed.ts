@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto'
 import {db} from './db.ts'
 import { roles } from './schemas/roles.ts'
 import {usersTable} from './schemas/user-schema.ts'
@@ -22,6 +23,7 @@ async function seed () {
         }),
 
         await db.insert(usersTable).values({
+            id:randomUUID(),
             name: faker.person.fullName(), 
             cpf: faker.string.numeric(11),
             email: faker.internet.email(),
@@ -29,6 +31,7 @@ async function seed () {
         }),
 
         await db.insert(usersTable).values({
+            id: randomUUID(),
             name: faker.person.fullName(), 
             cpf: faker.string.numeric(11),
             email: faker.internet.email(),
