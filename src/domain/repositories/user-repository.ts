@@ -2,4 +2,6 @@ import {type  BaseRepository } from "./../../domain/repositories/base-respositor
 import  type User from "../entities/user.ts";
 
 
-export interface UserRepository extends BaseRepository<User> {}
+export interface UserRepository extends BaseRepository<User> {
+    findByEmail(email: string): Promise<User | undefined>
+}
