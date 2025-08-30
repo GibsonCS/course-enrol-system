@@ -1,3 +1,4 @@
+import { UUID } from "node:crypto";
 import { UserRepository } from "../../../src/domain/repositories/user-repository.ts";
 
 export default class UpdateUserName {
@@ -7,7 +8,7 @@ export default class UpdateUserName {
         this.userRepository = userRepository 
     }
 
-    async execute (id: string, name: string): Promise<boolean> {
+    async execute (id: UUID, name: string): Promise<boolean> {
 
         const user =  await this.userRepository.findByID(id)
     
