@@ -1,4 +1,4 @@
-import { UUID } from "node:crypto"
+import {type UUID } from "node:crypto"
 
 export default class User {
     private _id: UUID
